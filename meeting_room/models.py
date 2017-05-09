@@ -20,15 +20,20 @@ class MeetingRoom(models.Model):
         (CONFIRMED, _('RoomConfirmed')),
     )
 
-    name = models.CharField(max_length=200, null=False, blank=False)
+    name = models.CharField(_('Name'), max_length=200, null=False, blank=False)
     location = models.CharField(
-        max_length=200, default=None, blank=True, null=True
+        _('Location'), max_length=200,
+        default=None, blank=True, null=True
     )
-    capacity = models.IntegerField(null=True, blank=True)
-    availability_start = models.DateTimeField(default=datetime.now)
-    availability_end = models.DateTimeField(default=datetime.now)
+    capacity = models.IntegerField(_('Capacity'), null=True, blank=True)
+    availability_start = models.DateTimeField(
+        _('AvailabilityStart'), default=datetime.now
+    )
+    availability_end = models.DateTimeField(
+        _('AvailabilityEnd'), null=True, blank=True
+    )
     status = models.CharField(
-        max_length=50, choices=ROOM_STATUS,
+        _('Status'), max_length=50, choices=ROOM_STATUS,
         default=AVAILABLE, null=False, blank=False
     )
     created = models.DateTimeField(auto_now_add=True, editable=False)
@@ -44,7 +49,7 @@ class MeetingRoom(models.Model):
 
 class Equipment(models.Model):
     name = models.CharField(
-        max_length=200, null=False, blank=False, default=''
+        _('Name'), max_length=200, null=False, blank=False, default=''
     )
     created = models.DateTimeField(auto_now_add=True, editable=False)
     updated = models.DateTimeField(auto_now=True, editable=False)
