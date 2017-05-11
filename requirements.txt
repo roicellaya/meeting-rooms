@@ -1,0 +1,2 @@
+django-jquery-ui==1.11.4.1
+MySQL-python==1.2.5

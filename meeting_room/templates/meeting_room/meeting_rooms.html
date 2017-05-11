@@ -1,0 +1,193 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+  <style type="text/css">
+    a, a:hover {
+      text-decoration: none;
+      color: #ffffff;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .errorlist {
+      color: red;
+      font-weight: bold;
+    }
+
+    .success_message {
+      color: green;
+      font-weight: bold;
+    }
+
+    select#room_unavailable,
+    select#room_reserved
+     {
+      overflow: auto;
+      width: 500px;
+    }
+  </style>
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>{% trans 'RequestMeetingRoom' %}</h1>
+      <div class="pull-right">
+        <a href="{% url 'logout' %}">
+          <button class="btn btn-primary" type="submit">
+            {% trans 'Logout' %}
+          </button>
+        </a>
+      </div>
+    </div>
+  </div>
+  <br />
+  <div class="row">
+    <div class="col-xs-12">
+      {% if form.non_field_errors %}
+        {{ form.non_field_errors }}
+      {% endif %}
+
+      {% if messages %}
+        {% for message in messages %}
+          <p class="success_message">{{ message }}</p>
+        {% endfor %}
+      {% endif %}
+      <form method="POST">
+        {% csrf_token %}
+        <h3>{% trans 'ReserveRoomInfo' %}</h3>
+        <br />
+        <div class="row">
+          <div class="col-xs-4">
+              {{ form.room.errors }}
+          </div>
+          <div class="col-xs-4">
+              {{ form.num_people.errors }}
+          </div>
+          <div class="col-xs-4">
+              {{ form.equipments.errors }}
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-4">
+            <div class="form-group">
+              {{ form.room.label }}
+              {{ form.room }}
+            </div>
+          </div>
+
+          <div class="col-xs-4">
+            <div class="form-group">
+              {{ form.num_people.label }}
+              {{ form.num_people }}
+            </div>
+          </div>
+
+          <div class="col-xs-4">
+            <div class="form-group">
+              {{ form.equipments.label }}
+              {{ form.equipments }}
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-4">
+              {{ form.date.errors }}
+          </div>
+          <div class="col-xs-4">
+              {{ form.start_hour.errors }}
+          </div>
+          <div class="col-xs-4">
+              {{ form.end_hour.errors }}
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-4">
+            <div class="form-group">
+              {{ form.date.label }}
+              {{ form.date }}
+            </div>
+          </div>
+
+          <div class="col-xs-4">
+            <div class="form-group">
+              {{ form.start_hour.label }}
+              {{ form.start_hour }}
+            </div>
+          </div>
+
+          <div class="col-xs-4">
+            <div class="form-group">
+              {{ form.end_hour.label }}
+              {{ form.end_hour }}
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-primary" type="submit">
+          {% trans 'RequestRoom' %}
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <h3>{% trans 'ReservedRooms' %}</h3>
+        <form method="POST" action="/meeting_room/request_reserved/">
+          {% csrf_token %}
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="form-group">
+                <select id="room_reserved" size="{{ reserveds|length }}"
+                        name="room_reserved" class="form-control">
+                  {% for reserved in reserveds %}
+                  <option value="{{ reserved.id }}">{{ reserved.name }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-12">
+              <button class="btn btn-primary" type="submit">
+                {% trans 'RequestReservedRoom' %}
+              </button>
+            </div>
+          </div>
+        </form>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <h3>{% trans 'UnavailableRooms' %}</h3>
+      <div class="form-group">
+        <select id="room_unavailable" size="{{ unavailables|length }}"
+                class="form-control">
+          {% for unavailable in unavailables %}
+          <option>{{ unavailable }}</option>
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    $(function() {
+      $( ".datepicker" ).datepicker({
+        changeMonth: true,
+        changeYear: true,
+        yearRange: "2017:2018",
+      });
+
+      $('.timepicker').datetimepicker({
+        format: 'HH:mm'
+      });
+    });
+  </script>
+{% endblock content %}

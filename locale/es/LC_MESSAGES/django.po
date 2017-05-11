@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-09 00:44-0300\n"
+"POT-Creation-Date: 2017-05-11 01:56-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,58 +18,158 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: meeting_room/models.py:17
+#: meeting_room/forms.py:10
+msgid "Room"
+msgstr "Sala"
+
+#: meeting_room/forms.py:16 meeting_room/models.py:85
+msgid "NumPeople"
+msgstr "Asistentes"
+
+#: meeting_room/forms.py:20 meeting_room/models.py:70 meeting_room/models.py:87
+msgid "Equipments"
+msgstr "Equipos"
+
+#: meeting_room/forms.py:26 meeting_room/models.py:82
+msgid "Date"
+msgstr "Fecha"
+
+#: meeting_room/forms.py:31 meeting_room/models.py:83
+msgid "StartHour"
+msgstr "Hora de inicio"
+
+#: meeting_room/forms.py:35 meeting_room/models.py:84
+msgid "EndHour"
+msgstr "Hora de fin"
+
+#: meeting_room/forms.py:42
+msgid "CapacityExceeded"
+msgstr "Capacidad excedida"
+
+#: meeting_room/forms.py:49
+msgid "ReservEarly"
+msgstr "La hora de inicio es menor a la hora de disponibilidad de la sala"
+
+#: meeting_room/forms.py:58
+msgid "ReservLate"
+msgstr ""
+"La hora de finalización es mayor a la hora de disponibilidad de la sala"
+
+#: meeting_room/forms.py:68
+msgid "HoursMustDiffer"
+msgstr "La hora de inicio debe ser menor a la hora de finalización"
+
+#: meeting_room/models.py:19
 msgid "RoomAvailable"
 msgstr "Disponible"
 
-#: meeting_room/models.py:18
+#: meeting_room/models.py:20
 msgid "RoomNotAvailable"
 msgstr "No Disponible"
 
-#: meeting_room/models.py:19
+#: meeting_room/models.py:21
 msgid "RoomReserved"
 msgstr "Reservada"
 
-#: meeting_room/models.py:20
+#: meeting_room/models.py:22
 msgid "RoomConfirmed"
 msgstr "Confirmada"
 
-#: meeting_room/models.py:23 meeting_room/models.py:52
+#: meeting_room/models.py:25 meeting_room/models.py:60
 msgid "Name"
 msgstr "Nombre"
 
-#: meeting_room/models.py:25
+#: meeting_room/models.py:27
 msgid "Location"
 msgstr "Ubicación"
 
-#: meeting_room/models.py:28
+#: meeting_room/models.py:30
 msgid "Capacity"
 msgstr "Capacidad"
 
-#: meeting_room/models.py:30
+#: meeting_room/models.py:32
 msgid "AvailabilityStart"
 msgstr "Disponible desde"
 
-#: meeting_room/models.py:33
+#: meeting_room/models.py:35
 msgid "AvailabilityEnd"
 msgstr "Disponible hasta"
 
-#: meeting_room/models.py:36
+#: meeting_room/models.py:38
 msgid "Status"
 msgstr "Estado"
 
-#: meeting_room/models.py:43
+#: meeting_room/models.py:42 meeting_room/models.py:64
+msgid "Created"
+msgstr "Fecha de creación"
+
+#: meeting_room/models.py:44 meeting_room/models.py:66
+msgid "Updated"
+msgstr "Fecha de actualización"
+
+#: meeting_room/models.py:47
 msgid "MeetingRoom"
 msgstr "Sala de reunión"
 
-#: meeting_room/models.py:44
+#: meeting_room/models.py:48
 msgid "MeetingRooms"
 msgstr "Sala de reuniones"
 
-#: meeting_room/models.py:58
+#: meeting_room/models.py:69
 msgid "Equipment"
 msgstr "Equipo"
 
-#: meeting_room/models.py:59
-msgid "Equipments"
-msgstr "Equipos"
+#: meeting_room/models.py:91
+msgid "Reservation"
+msgstr "Reserva"
+
+#: meeting_room/models.py:92
+msgid "Reservations"
+msgstr "Reservas"
+
+#: meeting_room/templates/base.html:14
+msgid "MeetingRoomSystem"
+msgstr "Sistema de reserva de salas de reuniones"
+
+#: meeting_room/templates/meeting_room/meeting_rooms.html:35
+msgid "RequestMeetingRoom"
+msgstr "Formulario para solicitar sala de reunión"
+
+#: meeting_room/templates/meeting_room/meeting_rooms.html:39
+msgid "Logout"
+msgstr "Cerrar sesión"
+
+#: meeting_room/templates/meeting_room/meeting_rooms.html:59
+msgid "ReserveRoomInfo"
+msgstr "Información para reservar sala"
+
+#: meeting_room/templates/meeting_room/meeting_rooms.html:131
+msgid "RequestRoom"
+msgstr "Solicitar sala"
+
+#: meeting_room/templates/meeting_room/meeting_rooms.html:139
+msgid "ReservedRooms"
+msgstr "Salas reservadas"
+
+#: meeting_room/templates/meeting_room/meeting_rooms.html:158
+msgid "RequestReservedRoom"
+msgstr "Solicitar sala reservada"
+
+#: meeting_room/templates/meeting_room/meeting_rooms.html:168
+msgid "UnavailableRooms"
+msgstr "Salas no disponibles"
+
+#: meeting_room/templates/registration/login.html:6
+#: meeting_room/templates/registration/login.html:30
+msgid "Login"
+msgstr "Inicio de sesión"
+
+#: meeting_room/views.py:55
+msgid "ReservationSuccess"
+msgstr "La reserva se hizo exitósamente"
+
+#: meeting_room/views.py:83
+msgid "EmailServiceUnavailable"
+msgstr ""
+"En estos momentos el servicio de correo no está disponible por lo que no se "
+"puede enviar la solicitud para liberar la sala, por favor inténtelo más tarde"

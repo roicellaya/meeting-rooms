@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 from django.conf.urls import url
-
-import views
+from views import MeetingRoomView, RequestReservedView
 
 urlpatterns = [
-    url(r'^$', views.index, name='index'),
+    url(r'^$', MeetingRoomView.as_view(), name='meeting_room'),
+    url(r'^request_reserved/$', RequestReservedView.as_view(),
+        name='request_reserved'),
 ]
